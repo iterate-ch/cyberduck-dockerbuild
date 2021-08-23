@@ -1,6 +1,10 @@
 name: Manually triggered workflow
 on:
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to checkout'
+        required: true
 
 jobs:
   build:
@@ -8,3 +12,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.inputs.tag }}
+        fetch-depth: 0
