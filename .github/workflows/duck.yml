@@ -1,10 +1,6 @@
 name: Manually triggered workflow
 on:
   workflow_dispatch:
-    inputs:
-      tag:
-        description: 'Tag to checkout'
-        required: true
 
 jobs:
   build:
@@ -12,7 +8,4 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        ref: ${{ github.event.inputs.tag }}
-        fetch-depth: 0
+      uses: alivedevil/cyberduck@release-8-0-0
